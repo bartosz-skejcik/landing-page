@@ -35,12 +35,6 @@ export const metadata: Metadata = {
         height: 630,
         alt: "VarsIT - Tworzenie stron internetowych dla lokalnych firm",
       },
-      {
-        url: "/images/webspot-discord-card.png", // Square format for Discord
-        width: 800,
-        height: 800,
-        alt: "VarsIT - Tworzenie stron internetowych dla lokalnych firm",
-      },
     ],
     siteName: "VarsIT",
   },
