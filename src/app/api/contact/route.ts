@@ -29,7 +29,7 @@ export type FormData = {
 /**
  * Server action to submit form data to Notion database
  */
-export async function submitToNotion(formData: FormData) {
+async function submitToNotion(formData: FormData) {
   // Get the environment variables
   const NOTION_API_KEY = process.env.NOTION_API_KEY;
   const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
@@ -110,6 +110,11 @@ export async function submitToNotion(formData: FormData) {
           Status: {
             status: {
               name: "New Lead",
+            },
+          },
+          "Submission Date": {
+            date: {
+              start: new Date().toISOString().split("T")[0],
             },
           },
         },
