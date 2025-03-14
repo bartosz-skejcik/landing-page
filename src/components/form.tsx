@@ -1,6 +1,6 @@
 "use client";
 
-import { FormData as FormDataType } from "@/api/contact/route";
+import { FormData as FormDataType } from "@/app/api/contact/route";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { Button } from "./ui/button";
@@ -31,14 +31,6 @@ function ContactForm() {
         body: JSON.stringify(formValues),
       });
 
-      if (!resp.ok) {
-        toast("Error", {
-          description: "Something went wrong. Please try again.",
-        });
-        console.log("Form submission error:", resp.statusText);
-        return;
-      }
-
       const result = await resp.json();
 
       toast(result.success ? "Success!" : "Error", {
@@ -64,7 +56,15 @@ function ContactForm() {
   }, [isSubmitting]);
 
   return (
-    <form id="contact-form" className="space-y-4" action={handleSubmit}>
+    <form
+      id="contact-form"
+      className="space-y-4"
+      onSubmit={(e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        handleSubmit(formData);
+      }}
+    >
       <div className="grid grid-cols-2 gap-4">
         <div className="space-y-2">
           <Label htmlFor="first-name">Imię</Label>

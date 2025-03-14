@@ -1,5 +1,6 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
+import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const formDataScheme = z.object({
@@ -143,17 +144,21 @@ export async function submitToNotion(formData: FormData) {
   }
 }
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: Request) {
   // CORS implementation - check the origin
-  const origin = req.headers.origin;
+  const headersList = await headers();
+  const origin = headersList.get("origin");
   const allowedOrigin = process.env.NEXT_PUBLIC_SITE_URL;
 
   // If no origin or allowed origin is not set, reject the request
   if (!origin || !allowedOrigin) {
-    return res.status(403).json({
-      success: false,
-      message: "Błąd CORS: Origin nie jest dozwolony",
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Błąd CORS: Origin nie jest dozwolony",
+      },
+      { status: 403 },
+    );
   }
 
   // Normalize origins for comparison (removing trailing slashes)
@@ -162,41 +167,59 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
 
   // Check if the origin is allowed
   if (normalizedOrigin !== normalizedAllowedOrigin) {
-    return res.status(403).json({
-      success: false,
-      message: "Błąd CORS: Origin nie jest dozwolony",
-    });
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Błąd CORS: Origin nie jest dozwolony",
+      },
+      { status: 403 },
+    );
   }
 
-  // Set CORS headers
-  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
-  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  const headersToAdd = {
+    "Access-Control-Allow-Origin": allowedOrigin,
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  };
 
   // Handle preflight requests
   if (req.method === "OPTIONS") {
-    return res.status(200).end();
+    return NextResponse.next({
+      status: 200,
+      headers: headersToAdd,
+    });
   }
 
   // Continue with the original logic
-  const body = req.body as FormData;
+  const body = (await req.json()) as FormData;
 
   try {
     const formData = formDataScheme.parse(body);
     const result = await submitToNotion(formData);
 
-    res.status(result.success ? 201 : 500).json(result);
+    return NextResponse.json(result, {
+      status: result.success ? 201 : 500,
+      headers: headersToAdd,
+    });
   } catch (error) {
     if (error instanceof Error) {
       console.error(error);
-      res.status(400).json({ success: false, message: error.message });
+      return NextResponse.json(
+        {
+          success: false,
+          message: error.message,
+        },
+        { status: 400, headers: headersToAdd },
+      );
     } else {
       console.error(error);
-      res.status(400).json({
-        success: false,
-        message: "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.",
-      });
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.",
+        },
+        { status: 500, headers: headersToAdd },
+      );
     }
-    return;
   }
 }
