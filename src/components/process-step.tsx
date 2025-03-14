@@ -1,19 +1,24 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Clock } from "lucide-react"
+import { Card, CardContent } from "@/components/ui/card";
+import { Clock } from "lucide-react";
 
 interface ProcessStepProps {
-  number: string
-  title: string
-  description: string
-  duration: string
+  number: string;
+  title: string;
+  description: string;
+  duration: string;
 }
 
-export default function ProcessStep({ number, title, description, duration }: ProcessStepProps) {
+export default function ProcessStep({
+  number,
+  title,
+  description,
+  duration,
+}: ProcessStepProps) {
   return (
     <Card>
       <CardContent className="p-6">
         <div className="flex gap-4">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary/80 text-primary-foreground">
             {number}
           </div>
           <div className="space-y-2">
@@ -27,6 +32,5 @@ export default function ProcessStep({ number, title, description, duration }: Pr
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }
-

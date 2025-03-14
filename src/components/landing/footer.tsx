@@ -14,7 +14,7 @@ function Footer() {
             className="rounded"
           />
           <p className="text-sm text-muted-foreground">
-            © 2025 WebCraft. Wszelkie prawa zastrzeżone.
+            © {new Date().getFullYear()} VarsIT. Wszelkie prawa zastrzeżone.
           </p>
         </div>
         <div className="flex gap-4">

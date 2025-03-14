@@ -2,7 +2,7 @@ import ProcessStep from "@/components/process-step";
 
 function Process() {
   return (
-    <section id="process" className="py-12 md:py-24 bg-muted/50">
+    <section id="process" className="py-12 md:py-24 bg-muted/20">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="flex flex-col items-center justify-center space-y-4 text-center">
           <div className="space-y-2">

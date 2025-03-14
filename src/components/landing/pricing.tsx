@@ -2,6 +2,57 @@ import PricingCard from "@/components/pricing-card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+const pricing = [
+  {
+    title: "Podstawowy",
+    price: "1 500 zł",
+    description: "Idealny dla nowych firm lub tych z prostymi potrzebami",
+    features: [
+      "Responsywna strona 3-5 stron",
+      "Formularz kontaktowy",
+      "Integracja z Google Maps",
+      "Podstawowa konfiguracja SEO",
+      "Responsywny design",
+      "Szkolenie z zarządzania treścią",
+      "60 zł/miesiąc hosting i utrzymanie",
+    ],
+    popular: false,
+  },
+  {
+    title: "Rozwojowy",
+    price: "3 500 zł",
+    description:
+      "Dla ustabilizowanych firm gotowych rozszerzyć swoją obecność online",
+    features: [
+      "Responsywna strona 5-8 stron",
+      "Pomoc w tworzeniu treści",
+      "Pomoc w wyborze zdjęć",
+      "Zaawansowane formularze kontaktowe",
+      "Konfiguracja Google Analytics",
+      "Integracja z mediami społecznościowymi",
+      "Optymalizacja lokalnego SEO",
+      "100 zł/miesiąc hosting i utrzymanie",
+    ],
+    popular: true,
+  },
+  {
+    title: "Premium",
+    price: "5 000 zł",
+    description: "Kompleksowe rozwiązanie dla firm z konkretnymi wymaganiami",
+    features: [
+      "Niestandardowa strona 8+ stron",
+      "Funkcjonalność e-commerce",
+      "System rezerwacji spotkań",
+      "Niestandardowa integracja bazy danych",
+      "Zaawansowana strategia SEO",
+      "Tworzenie treści",
+      "Optymalizacja konwersji",
+      "170 zł/miesiąc hosting i utrzymanie",
+    ],
+    popular: false,
+  },
+];
+
 function Pricing() {
   return (
     <section id="pricing" className="py-12 md:py-24">
@@ -20,53 +71,16 @@ function Pricing() {
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-3">
-          <PricingCard
-            title="Podstawowy"
-            price="4 500 zł"
-            description="Idealny dla nowych firm lub tych z prostymi potrzebami"
-            features={[
-              "Responsywna strona 3-5 stron",
-              "Formularz kontaktowy",
-              "Integracja z Google Maps",
-              "Podstawowa konfiguracja SEO",
-              "Responsywny design",
-              "Szkolenie z zarządzania treścią",
-              "60 zł/miesiąc hosting i utrzymanie",
-            ]}
-            popular={false}
-          />
-          <PricingCard
-            title="Rozwojowy"
-            price="9 000 zł"
-            description="Dla ustabilizowanych firm gotowych rozszerzyć swoją obecność online"
-            features={[
-              "Responsywna strona 5-8 stron",
-              "Pomoc w tworzeniu treści",
-              "Pomoc w wyborze zdjęć",
-              "Zaawansowane formularze kontaktowe",
-              "Konfiguracja Google Analytics",
-              "Integracja z mediami społecznościowymi",
-              "Optymalizacja lokalnego SEO",
-              "100 zł/miesiąc hosting i utrzymanie",
-            ]}
-            popular={true}
-          />
-          <PricingCard
-            title="Premium"
-            price="13 500 zł+"
-            description="Kompleksowe rozwiązanie dla firm z konkretnymi wymaganiami"
-            features={[
-              "Niestandardowa strona 8+ stron",
-              "Funkcjonalność e-commerce",
-              "System rezerwacji spotkań",
-              "Niestandardowa integracja bazy danych",
-              "Zaawansowana strategia SEO",
-              "Tworzenie treści",
-              "Optymalizacja konwersji",
-              "170 zł/miesiąc hosting i utrzymanie",
-            ]}
-            popular={false}
-          />
+          {pricing.map((price, index) => (
+            <PricingCard
+              key={index}
+              title={price.title}
+              price={price.price}
+              description={price.description}
+              features={price.features}
+              popular={price.popular}
+            />
+          ))}
         </div>
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-muted-foreground mb-6">

@@ -1,5 +1,15 @@
 import TestimonialCard from "@/components/testimonial-card";
 
+const testimonials = [
+  {
+    quote:
+      "Jako właściciel AuthorityCars, z przyjemnością rekomenduję chłopaków z VarsIT. Stworzona przez nich strona internetowa jest nowoczesna i intuicyjna, co pozytywnie wpływa na naszą działalność. Profesjonalizm zespołu VarsIT zasługuje na najwyższe uznanie",
+    author: "Szymon Skibniewski",
+    business: "AuthorityCars",
+    image: null,
+  },
+];
+
 function Testimonials() {
   return (
     <section id="testimonials" className="py-12 md:py-24 bg-muted/50">
@@ -19,42 +29,15 @@ function Testimonials() {
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
-          <TestimonialCard
-            quote="Współpraca z WebCraft to najlepsza decyzja biznesowa, jaką podjęłam w tym roku. Strona mojej piekarni przyciąga teraz nowych klientów każdego tygodnia, a ja mogę sama aktualizować sezonowe menu."
-            author="Sarah Johnson"
-            business="Piekarnia przy Głównej"
-            image="/placeholder.svg?height=80&width=80"
-          />
-          <TestimonialCard
-            quote="Wahałem się z inwestycją w stronę internetową, ale zwrot był niesamowity. Sam system rezerwacji zaoszczędził mi godziny rozmów telefonicznych każdego tygodnia."
-            author="Michael Rodriguez"
-            business="Zielony Kciuk Ogrodnictwo"
-            image="/placeholder.svg?height=80&width=80"
-          />
-          <TestimonialCard
-            quote="Jako dentysta potrzebowałam strony, która sprawi, że pacjenci poczują się komfortowo i będą dobrze poinformowani. Dokładnie to otrzymałam, plus łatwy sposób na umawianie wizyt dla nowych pacjentów."
-            author="Dr Emily Chen"
-            business="Klinika Dentystyczna Riverside"
-            image="/placeholder.svg?height=80&width=80"
-          />
-          <TestimonialCard
-            quote="Nasza księgarnia w końcu ma obecność online, która oddaje urok naszego fizycznego sklepu. System zamówień online otworzył zupełnie nowe źródło przychodów."
-            author="David Wilson"
-            business="Księgarnia na Rogu"
-            image="/placeholder.svg?height=80&width=80"
-          />
-          <TestimonialCard
-            quote="System rezerwacji zajęć całkowicie zmienił funkcjonowanie naszego studia. Koniec z arkuszami kalkulacyjnymi i zagubionymi e-mailami. Nasi klienci też to uwielbiają!"
-            author="Jessica Martinez"
-            business="Studio Fitness Miejskie"
-            image="/placeholder.svg?height=80&width=80"
-          />
-          <TestimonialCard
-            quote="Jako prawnicy potrzebowaliśmy strony, która wyrażałaby profesjonalizm, będąc jednocześnie przystępną. Efekt przekroczył nasze oczekiwania i przyniósł wartościowe kontakty."
-            author="Robert Thompson"
-            business="Kancelaria Prawna Harbor"
-            image="/placeholder.svg?height=80&width=80"
-          />
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              quote={testimonial.quote}
+              author={testimonial.author}
+              business={testimonial.business}
+              image={testimonial.image}
+            />
+          ))}
         </div>
       </div>
     </section>

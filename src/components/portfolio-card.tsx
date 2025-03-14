@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +9,7 @@ interface PortfolioCardProps {
   category: string;
   image: string;
   results: string[];
+  link: string;
 }
 
 export default function PortfolioCard({
@@ -15,9 +17,10 @@ export default function PortfolioCard({
   category,
   image,
   results,
+  link,
 }: PortfolioCardProps) {
   return (
-    <Card className="overflow-hidden group">
+    <Card className="overflow-hidden group pt-0">
       <div className="relative">
         <Image
           src={image || "/placeholder.svg"}
@@ -28,7 +31,7 @@ export default function PortfolioCard({
         />
         <Badge className="absolute top-2 right-2">{category}</Badge>
       </div>
-      <CardContent className="p-6">
+      <CardContent className="p-6 py-0">
         <div className="space-y-4">
           <h3 className="text-xl font-bold">{title}</h3>
           <div className="space-y-2">
@@ -39,10 +42,14 @@ export default function PortfolioCard({
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-1 text-primary font-medium text-sm pt-2">
-            <span>Zobacz studium przypadku</span>
+          <Link
+            href={link}
+            target="_blank"
+            className="flex items-center gap-1 text-primary font-medium text-sm pt-2"
+          >
+            <span>Sprawdź strone</span>
             <ArrowRight className="h-4 w-4" />
-          </div>
+          </Link>
         </div>
       </CardContent>
     </Card>

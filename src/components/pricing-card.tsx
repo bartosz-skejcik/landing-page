@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 interface PricingCardProps {
   title: string;
@@ -26,7 +27,7 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <Card
-      className={`flex flex-col ${popular ? "border-primary shadow-lg" : ""}`}
+      className={`flex flex-col ${popular ? "border-primary shadow-xl shadow-accent" : ""}`}
     >
       <CardHeader className="pb-0">
         {popular && <Badge className="w-fit mb-2">Najpopularniejszy</Badge>}
@@ -51,7 +52,13 @@ export default function PricingCard({
       </CardContent>
       <CardFooter>
         <Link href="#contact" className="w-full">
-          <Button className="w-full" variant={popular ? "default" : "outline"}>
+          <Button
+            className={cn(
+              "w-full hover:-translate-y-1 shadow-lg shadow-transparent transition-all duration-300",
+              popular && "hover:shadow-primary/30 ",
+            )}
+            variant={popular ? "default" : "outline"}
+          >
             Rozpocznij
           </Button>
         </Link>

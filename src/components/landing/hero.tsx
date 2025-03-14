@@ -2,10 +2,26 @@ import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Separator } from "../ui/separator";
+
+const stats = [
+  {
+    name: "Klienci",
+    value: "10+",
+  },
+  {
+    name: "Strony",
+    value: "20+",
+  },
+  {
+    name: "Satysfakcja",
+    value: "98%",
+  },
+];
 
 function Hero() {
   return (
-    <section className="py-12 md:py-24 lg:py-32 bg-muted/50">
+    <section className="py-12 md:py-24 lg:py-32 bg-muted/20">
       <div className="container px-4 md:px-6 mx-auto">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="space-y-4">
@@ -21,7 +37,7 @@ function Hero() {
               żargonu technicznego, bez zbędnych funkcji — tylko strony, które
               przynoszą realne wyniki.
             </p>
-            <div className="flex flex-col gap-2 min-[400px]:flex-row">
+            <div className="flex flex-col gap-2 min-[400px]:flex-row pt-2">
               <Link href="#contact">
                 <Button size="lg">Umów darmową konsultację</Button>
               </Link>
@@ -30,6 +46,25 @@ function Hero() {
                   Zobacz nasze projekty
                 </Button>
               </Link>
+            </div>
+            <div className="flex flex-col items-center gap-2 max-w-[600px] pt-5">
+              <Separator />
+              <div className="flex-row flex items-center justify-start w-full py-6">
+                {stats.map((stat, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-start gap-1 mr-auto"
+                  >
+                    <div className="text-5xl font-bold text-primary">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {stat.name}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <Separator />
             </div>
           </div>
           <div className="mx-auto w-full max-w-[500px] lg:max-w-none">
