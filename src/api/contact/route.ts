@@ -1,5 +1,3 @@
-"use server";
-
 import { NextApiRequest, NextApiResponse } from "next";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
@@ -40,7 +38,8 @@ export async function submitToNotion(formData: FormData) {
     console.error("Missing Notion API key or database ID");
     return {
       success: false,
-      message: "Server configuration error. Please contact support.",
+      message:
+        "Wystąpił błąd konfiguracji serwera. Skontaktuj się z pomocą techniczną.",
     };
   }
 
@@ -123,7 +122,7 @@ export async function submitToNotion(formData: FormData) {
       console.error("Notion API error:", data);
       return {
         success: false,
-        message: "Failed to submit form. Please try again later.",
+        message: "Nie udało się wysłać formularza. Spróbuj ponownie później.",
       };
     }
 
@@ -132,18 +131,54 @@ export async function submitToNotion(formData: FormData) {
 
     return {
       success: true,
-      message: "Form submitted successfully! We will contact you soon.",
+      message:
+        "Formularz został wysłany pomyślnie! Skontaktujemy się z Tobą wkrótce.",
     };
   } catch (error) {
     console.error("Error submitting to Notion:", error);
     return {
       success: false,
-      message: "An unexpected error occurred. Please try again later.",
+      message: "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.",
     };
   }
 }
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
+  // CORS implementation - check the origin
+  const origin = req.headers.origin;
+  const allowedOrigin = process.env.NEXT_PUBLIC_SITE_URL;
+
+  // If no origin or allowed origin is not set, reject the request
+  if (!origin || !allowedOrigin) {
+    return res.status(403).json({
+      success: false,
+      message: "Błąd CORS: Origin nie jest dozwolony",
+    });
+  }
+
+  // Normalize origins for comparison (removing trailing slashes)
+  const normalizedOrigin = origin.replace(/\/$/, "");
+  const normalizedAllowedOrigin = allowedOrigin.replace(/\/$/, "");
+
+  // Check if the origin is allowed
+  if (normalizedOrigin !== normalizedAllowedOrigin) {
+    return res.status(403).json({
+      success: false,
+      message: "Błąd CORS: Origin nie jest dozwolony",
+    });
+  }
+
+  // Set CORS headers
+  res.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  // Handle preflight requests
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
+  // Continue with the original logic
   const body = req.body as FormData;
 
   try {
@@ -157,9 +192,10 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
       res.status(400).json({ success: false, message: error.message });
     } else {
       console.error(error);
-      res
-        .status(400)
-        .json({ success: false, message: "An unknown error occurred" });
+      res.status(400).json({
+        success: false,
+        message: "Wystąpił nieoczekiwany błąd. Spróbuj ponownie później.",
+      });
     }
     return;
   }
