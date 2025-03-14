@@ -26,14 +26,14 @@ function Hero() {
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-center">
           <div className="space-y-4">
             <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm">
-              Strony internetowe dla małych firm lokalnych
+              Strony internetowe dla małych firm
             </div>
             <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Strony internetowe, które pracują tak ciężko jak Ty
             </h1>
             <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
               Tworzymy strony internetowe, które pomagają lokalnym firmom
-              nawiązywać kontakt z większą liczbą klientów i rozwijać się. Bez
+              nawiązywać kontakt z większą liczbą klientów i się rozwijać. Bez
               żargonu technicznego, bez zbędnych funkcji — tylko strony, które
               przynoszą realne wyniki.
             </p>
