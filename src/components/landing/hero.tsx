@@ -88,9 +88,8 @@ function Hero() {
                                         <CardContent className="flex items-center gap-4 p-4">
                                             <CheckCircle className="w-20 h-20 lg:h-5 lg:w-5 text-primary" />
                                             <div className="text-sm font-medium">
-                                                Perfekcyjny wygląd na
-                                                telefonach, gdzie szuka 70%
-                                                klientów
+                                                Perfekcyjny wygląd na telefonach
+                                                - tam szuka Cię 70% klientów
                                             </div>
                                         </CardContent>
                                     </Card>
