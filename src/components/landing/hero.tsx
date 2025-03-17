@@ -75,18 +75,18 @@ function Hero() {
                         <div className="grid gap-4">
                             <div className="grid grid-cols-2 gap-4">
                                 <div className="flex flex-col gap-4">
-                                    <Card>
+                                    <Card className="py-0 md:py-3 h-fit">
                                         <CardContent className="flex items-center gap-4 p-4">
-                                            <CheckCircle className="w-5 h-5 text-primary" />
+                                            <CheckCircle className="w-20 h-20 lg:h-5 lg:w-5 text-primary" />
                                             <div className="text-sm font-medium">
                                                 Błyskawiczne ładowanie - 2x
                                                 szybciej niż konkurencja
                                             </div>
                                         </CardContent>
                                     </Card>
-                                    <Card>
+                                    <Card className="py-0 md:py-3 h-fit">
                                         <CardContent className="flex items-center gap-4 p-4">
-                                            <CheckCircle className="w-5 h-5 text-primary" />
+                                            <CheckCircle className="w-20 h-20 lg:h-5 lg:w-5 text-primary" />
                                             <div className="text-sm font-medium">
                                                 Perfekcyjny wygląd na
                                                 telefonach, gdzie szuka 70%
@@ -96,18 +96,18 @@ function Hero() {
                                     </Card>
                                 </div>
                                 <div className="flex flex-col gap-4 pt-8">
-                                    <Card>
+                                    <Card className="py-0 md:py-3 h-fit">
                                         <CardContent className="flex items-center gap-4 p-4">
-                                            <CheckCircle className="w-5 h-5 text-primary" />
+                                            <CheckCircle className="w-20 h-20 lg:h-5 lg:w-5 text-primary" />
                                             <div className="text-sm font-medium">
                                                 Pozycjonowanie SEO, które
                                                 przyciąga klientów 24/7
                                             </div>
                                         </CardContent>
                                     </Card>
-                                    <Card>
+                                    <Card className="py-0 md:py-3 h-fit">
                                         <CardContent className="flex items-center gap-4 p-4">
-                                            <CheckCircle className="w-5 h-5 text-primary" />
+                                            <CheckCircle className="w-20 h-20 lg:h-5 lg:w-5 text-primary" />
                                             <div className="text-sm font-medium">
                                                 Pełna kontrola nad stroną bez
                                                 wiedzy technicznej
