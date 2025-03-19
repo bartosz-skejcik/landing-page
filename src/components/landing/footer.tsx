@@ -9,8 +9,8 @@ function Footer() {
                     <Image
                         src="/logo.jpg"
                         alt="Logo"
-                        width={24}
-                        height={24}
+                        width={75}
+                        height={75}
                         className="rounded"
                     />
                     <p className="text-sm text-muted-foreground">
