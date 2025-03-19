@@ -53,7 +53,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`}>
+      <body
+        className={`${inter.variable} antialiased max-w-dvw overflow-x-hidden`}
+      >
         {children}
         <Toaster />
         <Analytics />

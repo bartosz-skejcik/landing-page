@@ -10,17 +10,15 @@ import Footer from "@/components/landing/footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex items-center justify-center mx-auto w-full min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1">
-        <Hero />
-        <Portfolio />
-        <Process />
-        <Pricing />
-        <Testimonials />
-        <Faq />
-        <Contact />
-      </main>
+      <Hero />
+      <Portfolio />
+      <Process />
+      <Pricing />
+      <Testimonials />
+      <Faq />
+      <Contact />
       <Footer />
     </div>
   );
