@@ -8,7 +8,7 @@ function Navbar() {
             <div className="container flex items-center justify-between h-16 px-3 mx-auto md:px-0">
                 <Link href="/#" className="flex items-center gap-2">
                     <Image
-                        src="/placeholder.svg?height=32&width=32"
+                        src="/logo.jpg"
                         alt="Logo"
                         width={32}
                         height={32}
