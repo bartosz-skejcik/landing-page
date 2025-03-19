@@ -10,8 +10,8 @@ function Navbar() {
                     <Image
                         src="/logo.jpg"
                         alt="Logo"
-                        width={128}
-                        height={128}
+                        width={48}
+                        height={48}
                         className="rounded"
                     />
                     <span className="text-xl font-bold">VarsIT</span>
