@@ -1,6 +1,9 @@
 import PricingCard from "@/components/pricing-card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import AnimatedSection from "@/components/animated-section";
+import { fadeIn, textVariant } from "@/lib/animation";
+import { motion } from "motion/react";
 
 const pricing = [
     {
@@ -56,21 +59,30 @@ const pricing = [
 
 function Pricing() {
     return (
-        <section id="pricing" className="py-12 md:py-24">
+        <AnimatedSection id="pricing" className="py-12 md:py-24">
             <div className="container px-4 mx-auto md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                     <div className="space-y-2">
-                        <div className="inline-block px-3 py-1 text-sm rounded-lg bg-primary/10">
+                        <motion.div
+                            variants={fadeIn("down", 0.2)}
+                            className="inline-block px-3 py-1 text-sm rounded-lg bg-primary/10"
+                        >
                             Inwestycja w rozwój
-                        </div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                        </motion.div>
+                        <motion.h2
+                            variants={textVariant(0.3)}
+                            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+                        >
                             Zwrot z inwestycji, nie koszt
-                        </h2>
-                        <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeIn("up", 0.4)}
+                            className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+                        >
                             Strona internetowa to nie wydatek, ale inwestycja,
                             która zwraca się w postaci nowych klientów. Wybierz
                             pakiet, który przyniesie Ci najlepsze rezultaty.
-                        </p>
+                        </motion.p>
                     </div>
                 </div>
                 <div className="grid max-w-5xl grid-cols-1 gap-6 py-12 mx-auto md:grid-cols-3">
@@ -107,7 +119,7 @@ function Pricing() {
                     </div>
                 </div>
             </div>
-        </section>
+        </AnimatedSection>
     );
 }
 
