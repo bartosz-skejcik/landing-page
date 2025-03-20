@@ -10,9 +10,9 @@ import Footer from "@/components/landing/footer";
 
 export default function Home() {
     return (
-        <div className="flex flex-col items-center justify-center w-full min-h-screen mx-auto">
+        <div className="flex flex-col items-center justify-center min-h-screen mx-auto w-dvw">
             <Navbar />
-            <section className="flex-1">
+            <section className="flex-1 max-w-dvw">
                 <Hero />
                 <Portfolio />
                 <Process />

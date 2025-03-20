@@ -55,7 +55,7 @@ function Hero() {
                         </motion.p>
                         <motion.div
                             variants={fadeIn("up", 0.5)}
-                            className="flex flex-col gap-2 min-[400px]:flex-row pt-2 flex-wrap"
+                            className="flex gap-2 flex-col-reverse min-[400px]:flex-row pt-2 flex-wrap"
                         >
                             <Link href="#contact">
                                 <Button size="lg">

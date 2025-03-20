@@ -34,7 +34,7 @@ function Faq() {
                         </motion.p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 py-12 mx-auto w-5xl">
+                <div className="py-12 mx-auto md:w-5xl">
                     <FAQAccordion />
                 </div>
                 <div className="max-w-5xl mx-auto text-center">
