@@ -4,25 +4,25 @@ import Link from "next/link";
 import { CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "../ui/separator";
+// import { Separator } from "../ui/separator";
 import AnimatedSection from "../animated-section";
 import { motion } from "motion/react";
 import { fadeIn, textVariant, zoomIn } from "@/lib/animation";
 
-const stats = [
-    {
-        name: "Zadowolonych klientów",
-        value: "10+",
-    },
-    {
-        name: "Zrealizowanych projektów",
-        value: "20+",
-    },
-    {
-        name: "Wskaźnik satysfakcji",
-        value: "98%",
-    },
-];
+// const stats = [
+//     {
+//         name: "Zadowolonych klientów",
+//         value: "10+",
+//     },
+//     {
+//         name: "Zrealizowanych projektów",
+//         value: "20+",
+//     },
+//     {
+//         name: "Wskaźnik satysfakcji",
+//         value: "98%",
+//     },
+// ];
 
 function Hero() {
     return (
@@ -68,7 +68,7 @@ function Hero() {
                                 </Button>
                             </Link>
                         </motion.div>
-                        <motion.div
+                        {/* <motion.div
                             variants={fadeIn("up", 0.6)}
                             className="flex flex-col items-center gap-2 max-w-[600px] pt-5"
                         >
@@ -93,7 +93,7 @@ function Hero() {
                                 ))}
                             </div>
                             <Separator />
-                        </motion.div>
+                        </motion.div> */}
                     </div>
                     <motion.div
                         variants={zoomIn(0.5, 0.8)}
