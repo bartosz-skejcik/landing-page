@@ -9,17 +9,19 @@ import Contact from "@/components/landing/contact";
 import Footer from "@/components/landing/footer";
 
 export default function Home() {
-  return (
-    <div className="flex items-center justify-center mx-auto w-full min-h-screen flex-col">
-      <Navbar />
-      <Hero />
-      <Portfolio />
-      <Process />
-      <Pricing />
-      <Testimonials />
-      <Faq />
-      <Contact />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="flex flex-col items-center justify-center w-full min-h-screen mx-auto">
+            <Navbar />
+            <section className="flex-1">
+                <Hero />
+                <Portfolio />
+                <Process />
+                <Pricing />
+                <Testimonials />
+                <Faq />
+                <Contact />
+                <Footer />
+            </section>
+        </div>
+    );
 }

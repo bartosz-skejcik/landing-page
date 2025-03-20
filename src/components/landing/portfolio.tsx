@@ -1,6 +1,11 @@
+"use client";
+
 import PortfolioCard from "@/components/portfolio-card";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import AnimatedSection from "../animated-section";
+import { motion } from "motion/react";
+import { fadeIn, textVariant } from "@/lib/animation";
 
 const sites = [
     {
@@ -18,45 +23,61 @@ const sites = [
 
 function Portfolio() {
     return (
-        <section id="portfolio" className="py-12 md:py-24">
+        <AnimatedSection id="portfolio" className="py-12 md:py-24">
             <div className="container px-4 mx-auto md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center">
                     <div className="space-y-2">
-                        <div className="inline-block px-3 py-1 text-sm rounded-lg bg-primary/10">
+                        <motion.div
+                            variants={fadeIn("down", 0.2)}
+                            className="inline-block px-3 py-1 text-sm rounded-lg bg-primary/10"
+                        >
                             Nasze sukcesy
-                        </div>
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                        </motion.div>
+                        <motion.h2
+                            variants={textVariant(0.3)}
+                            className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl"
+                        >
                             Sprawdzone rezultaty, które możesz osiągnąć
-                        </h2>
-                        <p className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto">
+                        </motion.h2>
+                        <motion.p
+                            variants={fadeIn("up", 0.4)}
+                            className="max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mx-auto"
+                        >
                             Te firmy już zwiększyły swoje przychody dzięki
                             naszym stronom. Każdy dzień bez profesjonalnej
                             strony to utracone zamówienia i klienci, którzy
                             trafiają do konkurencji.
-                        </p>
+                        </motion.p>
                     </div>
                 </div>
                 <div className="grid max-w-5xl grid-cols-1 gap-6 py-12 mx-auto md:grid-cols-2 lg:grid-cols-3">
                     {sites.map((site, index) => (
-                        <PortfolioCard
+                        <motion.div
                             key={index}
-                            title={site.title}
-                            category={site.category}
-                            image={site.image}
-                            link={site.link}
-                            results={site.results}
-                        />
+                            variants={fadeIn("up", 0.5 + index * 0.1)}
+                        >
+                            <PortfolioCard
+                                title={site.title}
+                                category={site.category}
+                                image={site.image}
+                                link={site.link}
+                                results={site.results}
+                            />
+                        </motion.div>
                     ))}
                 </div>
-                <div className="flex justify-center">
+                <motion.div
+                    variants={fadeIn("up", 0.7)}
+                    className="flex justify-center"
+                >
                     <Link href="#contact">
                         <Button size="lg" className="font-medium">
                             Sprawdź, ilu klientów możesz zyskać
                         </Button>
                     </Link>
-                </div>
+                </motion.div>
             </div>
-        </section>
+        </AnimatedSection>
     );
 }
 
