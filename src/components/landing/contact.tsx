@@ -13,7 +13,7 @@ const contacts = [
     },
     {
         icon: MessageSquare,
-        text: "luki.borkowski@wp.pl",
+        text: "lborkowski.varsit@gmail.com",
     },
     {
         icon: Clock,
